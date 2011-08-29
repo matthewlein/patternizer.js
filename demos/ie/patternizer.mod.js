@@ -1,6 +1,5 @@
 /*
  * patternizer.js
- * v1.0
  * To see what this is capable of, see the UI at patternizer.com
  * 
  * Developed by Matthew Lein
@@ -69,7 +68,9 @@ var patternizer = {
 				tile = stripeWidth + gap,
 				repeats = ( (diagLength * 2) + offset ) / tile;
 
-			// rotate	
+			
+			ctx.save();
+			// rotate
 			ctx.rotate( patternizer.DEGREES_RADIANS(rotate) );
 			
 			for ( var i=0; i < repeats; i++ ) {
@@ -108,10 +109,9 @@ var patternizer = {
 				}
 
 			}
-
 			
 			//rotate back
-			ctx.rotate( -patternizer.DEGREES_RADIANS(rotate) );
+			ctx.restore();
 			
 	
 		}
@@ -121,10 +121,8 @@ var patternizer = {
 
 };
 
-if ( patternizer.supportsCanvas ) {
-	// prototype the patternizer method onto canvas
-	HTMLCanvasElement.prototype.patternizer = function ( options ) { 
+
+	var patternize = function ( canvas, options ) { 
 		// pass in the canvas and options
-		patternizer.stripe( this, options );
+		patternizer.stripe( canvas, options );
 	};
-}
