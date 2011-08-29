@@ -3,7 +3,6 @@ Patternizer.js is a <canvas> script to generate stripe patterns. To see what it'
 <h2>How to Use</h2>
 patternizer.js adds a patternizer() method to canvas elements. It can receive one parameter, which is an options object. In that you can specify a stripes array, and a background color.
 <pre>
-
 var bgCanvas = document.getElementById('bgCanvas');
 
 bgCanvas.patternizer({
