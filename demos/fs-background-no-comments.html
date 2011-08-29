@@ -1,0 +1,137 @@
+<!doctype html>
+
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>	   <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>	   <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+
+	<title></title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="js/patternizer.js"></script>
+<script src="js/jquery.ba-throttle-debounce.1.1.min.js"></script>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+}
+h2 {
+    margin: 40px 0 15px 0;
+}
+code {
+    font-weight: bold;
+}
+
+/* required */ 
+#bgCanvas {
+    position: fixed;
+}
+
+/* required */
+.wrapper {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+}
+
+/* customize to your page design */
+.content-wrapper {
+    width: 920px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <h1>Fullscreen, resizing background</h1>
+        <p>This page has a fullscreen &lt;canvas&gt; background that sizes itself based on the window size. It will redraw the canvas only when resizing up.</p>
+        <h3>Comments/suggestions?</h3>
+        If you have any comments, suggestions, or improvements, please let me know at <a href="https://github.com/matthewlein/patternizer.js/issues">github</a>, where this is maintained.
+    </div>
+</div>
+
+
+<script>
+
+var bgCanvas = document.getElementById('bgCanvas');
+	
+function render() {
+    
+    bgCanvas.patternizer({
+        stripes : [ 
+            {
+                color: '#ffb4d5',
+                rotation: 45,
+                opacity: 80,
+                mode: 'normal',
+                width: 30,
+                gap: 10,
+                offset: 0
+            },
+            {
+                color: '#3a83d6',
+                rotation: 200,
+                opacity: 50,
+                mode: 'plaid',
+                width: 10,
+                gap: 10,
+                offset: 0
+            }
+        ],
+        bg : '#ffffff'
+    });
+    
+}
+
+// resize the canvas to the window size
+function onResize() {
+    
+    // number of pixels of extra canvas drawn
+    var buffer = 100;
+
+    // if extra canvas size is less than the buffer amount
+    if (bgCanvas.width - window.innerWidth < buffer ||
+        bgCanvas.height - window.innerHeight < buffer) {
+        
+        // resize the canvas to window plus double the buffer
+        bgCanvas.width = window.innerWidth + (buffer * 2);
+    	bgCanvas.height = window.innerHeight + (buffer * 2);
+    	
+    	render();
+    }	
+
+}
+
+function init() {
+    onResize();
+    // create a listener for resize
+    // cowboy's throttle plugin keeps this event from running hog wild
+    window.addEventListener('resize', Cowboy.throttle(200, onResize), false);
+}
+
+init();
+		
+</script>
+
+</body>
+</html>
