@@ -1,4 +1,0 @@
-/* Modernizr 2.0.6 (Custom Build) | MIT & BSD
- * Contains: canvas | cssclasses
- */
-;window.Modernizr=function(a,b,c){function x(a,b){return!!~(""+a).indexOf(b)}function w(a,b){return typeof a===b}function v(a,b){return u(prefixes.join(a+";")+(b||""))}function u(a){k.cssText=a}var d="2.0.6",e={},f=!0,g=b.documentElement,h=b.head||b.getElementsByTagName("head")[0],i="modernizr",j=b.createElement(i),k=j.style,l,m=Object.prototype.toString,n={},o={},p={},q=[],r,s={}.hasOwnProperty,t;!w(s,c)&&!w(s.call,c)?t=function(a,b){return s.call(a,b)}:t=function(a,b){return b in a&&w(a.constructor.prototype[b],c)},n.canvas=function(){var a=b.createElement("canvas");return!!a.getContext&&!!a.getContext("2d")};for(var y in n)t(n,y)&&(r=y.toLowerCase(),e[r]=n[y](),q.push((e[r]?"":"no-")+r));u(""),j=l=null,e._version=d,g.className=g.className.replace(/\bno-js\b/,"")+(f?" js "+q.join(" "):"");return e}(this,this.document);
