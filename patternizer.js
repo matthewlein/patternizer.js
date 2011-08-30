@@ -126,6 +126,7 @@ if ( patternizer.supportsCanvas ) {
 	HTMLCanvasElement.prototype.patternizer = function ( options ) { 
 		// pass in the canvas and options
 		patternizer.stripe( this, options );
+		//return for chaining
 		return this;
 	};
 }
