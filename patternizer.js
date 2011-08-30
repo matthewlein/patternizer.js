@@ -1,6 +1,6 @@
 /*
  * patternizer.js
- * v1.0
+ * v1.01
  * To see what this is capable of, see the UI at patternizer.com
  * 
  * Developed by Matthew Lein
@@ -126,5 +126,6 @@ if ( patternizer.supportsCanvas ) {
 	HTMLCanvasElement.prototype.patternizer = function ( options ) { 
 		// pass in the canvas and options
 		patternizer.stripe( this, options );
+		return this;
 	};
 }
